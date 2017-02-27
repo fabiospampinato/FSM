@@ -217,6 +217,8 @@ class FSM {
 
     enters.forEach ( this._enter.bind ( this ) );
 
+    this.set ( nextState );
+
   }
 
   /* EVENTS */
