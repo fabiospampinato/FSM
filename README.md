@@ -120,6 +120,10 @@ If the transition is not doable, or if the next state is invalid it will throw a
 
 Otherwise it will perform the transition, basically: triggers `exit` events, if exists calls model's method that have the same name as this transition, triggers `enter` events.
 
+## Related
+
+- [HSM](https://github.com/fabiospampinato/HSM) - Hierarchical State Machine implementation, with support for guards and enter/exit events.
+
 ## License
 
 MIT © Fabio Spampinato
