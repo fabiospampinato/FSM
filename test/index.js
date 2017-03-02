@@ -150,8 +150,8 @@ describe ( 'FSM', it => {
       t.context.F._callModel ( 'true', [1, 2, 3] );
 
       t.true ( res1.called );
-      t.deepEqual ( res1.args, [1, 2, 3] );
-      t.deepEqual ( res1.result, t.context.M.true () );
+      t.deepEqual ( res1.arguments, [1, 2, 3] );
+      t.deepEqual ( res1.return, t.context.M.true () );
 
       const res2 = {};
 
@@ -160,8 +160,8 @@ describe ( 'FSM', it => {
       t.context.F._callModel ( 'sub.true', [1, 2, 3] );
 
       t.true ( res2.called );
-      t.deepEqual ( res2.args, [1, 2, 3] );
-      t.deepEqual ( res2.result, t.context.M.sub.true () );
+      t.deepEqual ( res2.arguments, [1, 2, 3] );
+      t.deepEqual ( res2.return, t.context.M.sub.true () );
 
     });
 
@@ -252,7 +252,7 @@ describe ( 'FSM', it => {
       t.context.F.do ( 'toB', 1, 2, 3 );
 
       t.true ( res.called );
-      t.deepEqual ( res.args, ['toB', 1, 2, 3] );
+      t.deepEqual ( res.arguments, ['toB', 1, 2, 3] );
 
     });
 
