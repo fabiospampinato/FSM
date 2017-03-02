@@ -1,6 +1,6 @@
 {
   "name": "@fabiospampinato/fsm",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Finite State Machine implementation, with support for guards and enter/exit events.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
