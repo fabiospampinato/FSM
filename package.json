@@ -35,7 +35,11 @@
     "type": "git",
     "url": "https://github.com/fabiospampinato/fsm.git"
   },
-  "keywords": [],
+  "keywords": [
+    "fsm",
+    "finite-state",
+    "automaton"
+  ],
   "dependencies": {
     "@fabiospampinato/fifo": "^1.0.0",
     "@fabiospampinato/lockable": "^1.0.0",
