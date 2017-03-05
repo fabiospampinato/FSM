@@ -40,7 +40,7 @@ const states = {
       }
     }
   },
-  waking: {
+  walking: {
     transitions: {
       smile: '*',
       stop: 'standing',
