@@ -1,8 +1,5 @@
 # FSM
 
-![Issues](https://img.shields.io/github/issues/fabiospampinato/fsm.svg)
-[![NPM version](https://img.shields.io/npm/v/@fabiospampinato/fsm.svg)](https://www.npmjs.com/package/@fabiospampinato/fsm)
-
 Finite State Machine implementation, with support for guards and enter/exit events.
 
 ## Install
