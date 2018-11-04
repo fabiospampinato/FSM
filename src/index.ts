@@ -1,7 +1,12 @@
 
 /* IMPORT */
 
-import * as _ from 'lodash';
+import compact from 'lodash/compact';
+import get from 'lodash/get';
+import includes from 'lodash/includes';
+import isFunction from 'lodash/isFunction';
+import isString from 'lodash/isString';
+import isUndefined from 'lodash/isUndefined';
 import FIFO from '@fabiospampinato/fifo';
 import Lockable from '@fabiospampinato/lockable';
 import {guard, model, state, states, transition, transitionObj, statesObj} from './types';
@@ -17,9 +22,9 @@ class FSM {
 
   model: model;
   states: statesObj;
-  queue: FIFO;
+  queue = new FIFO (); //TSC
   initial: state;
-  processing: Lockable;
+  processing = new Lockable (); //TSC
   state: state;
 
   /* CONSTRUCTOR */
@@ -28,9 +33,7 @@ class FSM {
 
     this.model = model;
     this.states = states;
-    this.queue = new FIFO ();
     this.initial = initial;
-    this.processing = new Lockable ();
 
     this.set ( this.initial );
 
@@ -63,7 +66,7 @@ class FSM {
       if ( !parts ) throw new Error ( '[fsm] Invalid guard' );
 
       const affirmative = ( parts[1] !== '!' ),
-            method = _.compact ( parts.slice ( 2 ) ).join ( '.' );
+            method = compact ( parts.slice ( 2 ) ).join ( '.' );
 
       if ( !!this._callModel ( method ) !== affirmative ) return false;
 
@@ -87,7 +90,7 @@ class FSM {
 
     const transitionObj = this._getTransition ( state, transition );
 
-    if ( _.isUndefined ( transitionObj ) || _.isString ( transitionObj ) ) return transitionObj;
+    if ( isUndefined ( transitionObj ) || isString ( transitionObj ) ) return transitionObj;
 
     return transitionObj.state;
 
@@ -97,7 +100,7 @@ class FSM {
 
     const transitionObj = this._getTransition ( state, transition );
 
-    if ( _.isUndefined ( transitionObj ) || _.isString ( transitionObj ) ) return;
+    if ( isUndefined ( transitionObj ) || isString ( transitionObj ) ) return;
 
     return transitionObj.guard;
 
@@ -113,11 +116,11 @@ class FSM {
 
   _callModel ( path: string, args: any[] = [] ) {
 
-    const method = _.get ( this.model, path );
+    const method = get ( this.model, path );
 
-    if ( !_.isFunction ( method ) ) return;
+    if ( !isFunction ( method ) ) return;
 
-    const context = _.includes ( path, '.' ) ? _.get ( this.model, path.split ( '.' ).slice ( 0, -1 ).join ( '.' ) ) : this.model;
+    const context = includes ( path, '.' ) ? get ( this.model, path.split ( '.' ).slice ( 0, -1 ).join ( '.' ) ) : this.model;
 
     return method.apply ( context, args );
 

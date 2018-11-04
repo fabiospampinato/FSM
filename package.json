@@ -40,10 +40,10 @@
     "automaton"
   ],
   "dependencies": {
-    "@fabiospampinato/fifo": "^1.0.0",
-    "@fabiospampinato/lockable": "^1.0.0",
-    "@types/lodash": "^4.14.52",
-    "lodash": "^4.17.4"
+    "@fabiospampinato/fifo": "^1.0.3",
+    "@fabiospampinato/lockable": "^1.0.2",
+    "@types/lodash": "^4.14.117",
+    "lodash": "^4.17.11"
   },
   "devDependencies": {
     "ava": "^0.18.2",
