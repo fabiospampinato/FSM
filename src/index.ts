@@ -245,4 +245,4 @@ class FSM {
 
 /* EXPORT */
 
-export = Object.assign ( FSM, { default: FSM } );
+export default FSM;
