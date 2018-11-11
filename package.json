@@ -40,8 +40,8 @@
     "automaton"
   ],
   "dependencies": {
-    "@fabiospampinato/fifo": "^1.0.3",
-    "@fabiospampinato/lockable": "^1.0.2",
+    "@fabiospampinato/fifo": "^1.0.4",
+    "@fabiospampinato/lockable": "^1.0.3",
     "@types/lodash": "^4.14.117",
     "lodash": "^4.17.11"
   },

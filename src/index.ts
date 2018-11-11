@@ -1,14 +1,14 @@
 
 /* IMPORT */
 
-import compact from 'lodash/compact';
-import get from 'lodash/get';
-import includes from 'lodash/includes';
-import isFunction from 'lodash/isFunction';
-import isString from 'lodash/isString';
-import isUndefined from 'lodash/isUndefined';
-import FIFO from '@fabiospampinato/fifo';
-import Lockable from '@fabiospampinato/lockable';
+import compact = require ( 'lodash/compact' );
+import get = require ( 'lodash/get' );
+import includes = require ( 'lodash/includes' );
+import isFunction = require ( 'lodash/isFunction' );
+import isString = require ( 'lodash/isString' );
+import isUndefined = require ( 'lodash/isUndefined' );
+import FIFO, { type as FIFOType } from '@fabiospampinato/fifo';
+import Lockable, { type as LockableType } from '@fabiospampinato/lockable';
 import {guard, model, state, states, transition, transitionObj, statesObj} from './types';
 
 /* FSM */
@@ -22,9 +22,9 @@ class FSM {
 
   model: model;
   states: statesObj;
-  queue = new FIFO (); //TSC
+  queue: FIFOType;
   initial: state;
-  processing = new Lockable (); //TSC
+  processing: LockableType;
   state: state;
 
   /* CONSTRUCTOR */
@@ -33,8 +33,9 @@ class FSM {
 
     this.model = model;
     this.states = states;
+    this.queue = new FIFO ();
     this.initial = initial;
-
+    this.processing = new Lockable ();
     this.set ( this.initial );
 
   }
